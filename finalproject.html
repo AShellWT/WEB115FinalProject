@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WEB-115 Final Project</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="projectJS.js" defer></script>
+  <style>
+    #banner {
+      background: #657dd6;
+      color: white;
+      padding: 1em;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    #banner h1, #banner h2 {
+      margin: 0.2em;
+    }
+
+    form {
+      margin: 1em auto;
+      max-width: 800px;
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1em;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.5em;
+      text-align: center;
+    }
+    th {
+      background: #f0f0f0;
+    }
+    input[type="text"], input[type="email"] {
+      width: 95%;
+      padding: 0.3em;
+      box-sizing: border-box;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 1em;
+    }
+    .buttons button {
+      margin: 0 0.5em;
+      padding: 0.5em 1em;
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="banner">
+    <h1>Alex Shelley</h1>
+    <h2>WEB-115 | Section 0006</h2>
+    <h2>Build Your Meal Plan</h2>
+  </div>
+
+<!-- Not sure if images or more advanced designs for the banner are required as I know they are incentivized, so I hope the simple formating is acceptable.-->
+
+  <form id="mealForm">
+    <fieldset>
+      <legend>Personal Information</legend>
+      <label>
+        Name:
+        <input type="text" id="userName" required>
+      </label>
+      <label>
+        Email:
+        <input type="email" id="userEmail" required>
+      </label>
+      <label>
+        Weekly Goal:
+        <input type="text" id="userGoal">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Weekly Meal Plan</legend>
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Morning Snack</th>
+            <th>Lunch</th>
+            <th>Evening Snack</th>
+            <th>Dinner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <script>
+            const days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+              days.forEach(day => {
+                document.write(`
+                <tr>
+                <td>${day}</td>
+                <td><input type="text" name="${day}_breakfast"></td>
+                <td><input type="text" name="${day}_morningsnack"></td>
+                <td><input type="text" name="${day}_lunch"></td>
+                <td><input type="text" name="${day}_eveningsnack"></td>
+                <td><input type="text" name="${day}_dinner"></td>
+                </tr>
+              `);
+             });
+          </script>
+        </tbody>
+      </table>
+    </fieldset>
+
+    <div class="buttons">
+      <button type="button" onclick="generatePlan()">Generate Plan</button>
+      <button type="button" onclick="clearPlanner()">Clear Planner</button>
+      <button type="button" onclick="printPlanner()">Print Planner</button>
+      <button type="button" onclick="downloadPlanner()">Download Planner</button>
+    </div>
+  </form>
+
+</body>
+</html>
